@@ -17,8 +17,7 @@ branches:
     - hexo 
 
 before_install:
-  - npm install -g hexo-cli gulp yarn
-  - git clone git://github.com/shenliyang/hexo-theme-snippet.git themes/hexo-theme-snippet
+  - npm install -g hexo-cli
 # Start: Build Lifecycle
 install:
   - npm install
