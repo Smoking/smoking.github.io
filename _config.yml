@@ -8,8 +8,8 @@ subtitle: 程序员没事就折腾
 description: 多看看,多学习,多实践
 keywords: 读后感,代码,前端,C++,mac osx
 author: smoking
-language:
-timezone:
+language: zh-cn
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
