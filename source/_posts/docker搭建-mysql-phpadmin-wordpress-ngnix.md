@@ -4,7 +4,7 @@ date: 2019-05-17 17:27:31
 author: smoking
 img: https://www.dreamhost.com/blog/wp-content/uploads/2017/07/wordpress-logo-stacked-rgb.png
 top: false
-cover: true
+cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false

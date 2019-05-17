@@ -4,7 +4,7 @@ date: 2019-05-17 17:03:15
 author: smoking
 img: https://libwebsockets.org/libwebsockets.org-logo.svg
 top: false
-cover: true
+cover: false
 coverImg: /medias/featureimages/2.jpg
 toc: false
 mathjax: false
