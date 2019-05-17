@@ -115,5 +115,5 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://gh_token@github.com/Smoking/smoking.github.io.git
+  repository: https://5a1a40b4cc5034b545bc4e24843078ab9b90a7a5@github.com/Smoking/smoking.github.io.git
   branch: master
