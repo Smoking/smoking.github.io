@@ -85,7 +85,11 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
-  
+baidu_url_submit:
+  count: 9 ## 比如3，代表提交最新的三个链接
+  host: smoking.github.io ## 在百度站长平台中注册的域名
+  token: baidu_token ## 请注意这是您的秘钥， 请不要发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -123,3 +127,4 @@ deploy:
   type: git
   repository: https://gh_token@github.com/Smoking/smoking.github.io.git
   branch: master
+  - type: baidu_url_submitter
