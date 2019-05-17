@@ -3448,9 +3448,9 @@ mv@~2:
     rimraf "~2.4.0"
 
 nan@^2.12.1:
-  version "2.13.2"
-  resolved "http://172.20.176.77:4873/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
-  integrity sha1-9R3Hrma6fV1V4ebU2AkugCya7+c=
+  version "2.14.0"
+  resolved "http://172.20.176.77:4873/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
+  integrity sha1-eBj3IgJ7JFmobwKV1DTR/CM2xSw=
 
 nanomatch@^1.2.9:
   version "1.2.13"
