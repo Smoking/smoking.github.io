@@ -2,7 +2,7 @@
 title: libwebsocket windows 编译
 date: 2019-05-17 17:03:15
 author: smoking
-img: https://libwebsockets.org/libwebsockets.org-logo.svg
+img: /medias/featureimages/8.jpg
 top: false
 cover: false
 coverImg: /medias/featureimages/2.jpg
