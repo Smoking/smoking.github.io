@@ -9,7 +9,8 @@ node_js:
 cache:
   directories:
     - node_modules
-
+notifications:
+  webhooks:https://oapi.dingtalk.com/robot/send?access_token=776277928065bdd700e7433b97d9593b8b3b02e5a96c61b99f0ea908b59adf3b
 # 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
 branches:
   only:
