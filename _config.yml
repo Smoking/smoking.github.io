@@ -128,6 +128,6 @@ deploy:
   repo: https://gh_token@github.com/Smoking/smoking.github.io.git
   branch: master
 - type: git
-  repo: https://coding_token@git.dev.tencent.com/smoking/smoking.coding.me.git
+  repo: https://smoking:coding_token@git.dev.tencent.com/smoking/smoking.coding.me.git
   branch: master
 - type: baidu_url_submitter
