@@ -7,6 +7,7 @@ cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false
+keywords: macosx,objc,代码,编程,马赛克,涂抹,CoreImage,shapeLayer,图层
 summary: macosx 涂抹位置变马赛克实现
 categories: macosx
 tags:
@@ -112,3 +113,7 @@ self.view.layer.contents = img1;
 [源码](https://github.com/Smoking/mosiac.git "源码")
 
 [深圳利程电子有限公司](https://www.lcptcheater.com)
+
+
+------------------------------------------------
+**所有图片均来自网络**

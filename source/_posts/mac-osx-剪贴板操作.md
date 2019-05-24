@@ -7,6 +7,7 @@ cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false
+keywords: macosx,objc,代码,编程,剪贴板
 summary: macosx 实现剪贴板的打开、查询、赋值、清空的等基本操作
 categories: macosx
 tags:
@@ -118,3 +119,7 @@ bool Clipboard::SetDropFileData(std::vector<std::string> _vctFile, bool _bCopyOr
 
 
 [深圳利程电子有限公司](https://www.lcptcheater.com)
+
+
+------------------------------------------------
+**所有图片均来自网络**

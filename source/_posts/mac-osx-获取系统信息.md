@@ -7,6 +7,7 @@ cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false
+keywords: macosx,C++,objc,代码,编程,MAC地址,CPU,序列号,操作系统,硬盘
 summary: macosx 获取MAC地址、获取CPU序列号、获取操作系统序列号、获取硬盘序列号实现
 categories: macosx
 tags:
@@ -132,4 +133,8 @@ std::string ComputerDevice::GetHardWareSerial()
 
 [深圳利程电子有限公司](https://www.lcptcheater.com)
 
+
+
+------------------------------------------------
+**所有图片均来自网络**
 

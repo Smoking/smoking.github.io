@@ -8,6 +8,7 @@ cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false
+keywords: docker,lnmp,wordpress,phpadmin,nginx,linux,mysql,php
 summary: 利用docker搭建 lnmp 环境运行wordpress
 categories: shell
 tags:

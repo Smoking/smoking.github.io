@@ -7,6 +7,7 @@ cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
 mathjax: false
+keywords: macosx,objc,代码,编程,dock栏
 summary: macosx 添加程序到dock栏，判断程序是否保留在dock栏，以及把程序从dock栏移出实现
 categories: macosx
 tags:
@@ -73,3 +74,5 @@ tags:
 
 [深圳利程电子有限公司](https://www.lcptcheater.com)
 
+------------------------------------------------
+**所有图片均来自网络**
