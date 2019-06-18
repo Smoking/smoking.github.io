@@ -1,7 +1,7 @@
 ---
 title: electron工程打包
 author: Smoking
-top: false
+top: true
 cover: false
 coverImg: /medias/featureimages/3.jpg
 toc: true
