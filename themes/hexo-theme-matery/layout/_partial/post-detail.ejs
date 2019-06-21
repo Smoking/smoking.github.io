@@ -77,9 +77,11 @@
 
             <%- partial('_partial/reprint-statement') %>
 
-            <%- partial('_partial/google_adsense.ejs') %>
+            
         </div>
     </div>
+    
+    <%- partial('_partial/google_adsense.ejs') %>
 
     <% if (theme.gitalk && theme.gitalk.enable) { %>
         <%- partial('_partial/gitalk') %>
@@ -103,6 +105,8 @@
 
     <%- partial('_partial/prev-next') %>
 </div>
+
+
 
 <% if (theme.copyright.enable) { %>
 <script>
