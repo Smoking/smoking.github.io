@@ -2,7 +2,7 @@
 title: libwebsocket windows 编译
 date: 2019-05-17 17:03:15
 author: smoking
-img: /medias/featureimages/8.jpg
+img: https://i.loli.net/2019/06/27/5d14b0633eca169746.png
 top: false
 cover: false
 coverImg: /medias/featureimages/2.jpg
@@ -10,7 +10,7 @@ toc: false
 mathjax: false
 keywords: windows,c++,代码,编程,libwebsocket
 summary: libwebsocket windows 编译
-categories: C++
+categories: 编程
 tags:
   - C++
   - windows 
@@ -72,13 +72,13 @@ If you're using libuv, you must make sure to compile libuv with the same multith
 
 1、按照官网提示使用VS自带的命令窗进行输入指令：
 
-![](https://upload-images.jianshu.io/upload_images/1728667-bf3bd453f4163687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.loli.net/2019/06/27/5d14af54977db40935.png)
 
 2、进入指定的libwebsock源码目录创建目录
 
-![](https://upload-images.jianshu.io/upload_images/1728667-c9db378b00abcf0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.loli.net/2019/06/27/5d14af5483c8b13589.png)
 
-![](https://upload-images.jianshu.io/upload_images/1728667-696b496def851932.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.loli.net/2019/06/27/5d14af547549889948.png)
 
 
 cmake-G "Visual Studio 14".. -DLIB_SUFFIX=64 -DLWS_WITH_HTTP2=1     -DLWS_OPENSSL_INCLUDE_DIRS=E:\Extern_Library\openssl\inc32\openssl -DLWS_OPENSSL_LIBRARIES="E:\Extern_Library\openssl\out32\libeay32.lib"
@@ -86,7 +86,7 @@ cmake-G "Visual Studio 14".. -DLIB_SUFFIX=64 -DLWS_WITH_HTTP2=1     -DLWS_OPENSS
 Bulid 目录下生成libwebsocket工程
 
 
-![](https://upload-images.jianshu.io/upload_images/1728667-6974581b55cf5d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.loli.net/2019/06/27/5d14af549d74364021.png)
 
 vs 编译工程 ，发现找不到OpenSSL头文件
 
