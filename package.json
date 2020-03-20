@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "4.2.0"
   },
   "scripts": {
+    "dev": "hexo s",
+    "new": "hexo new",
+    "g": "hexo generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "hexo": "^3.8.0",
+    "hexo": "^4.2.0",
     "hexo-baidu-url-submit": "0.0.6",
     "hexo-deployer-git": "^1.0.0",
     "hexo-generator-archive": "^0.1.5",
