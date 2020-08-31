@@ -1,0 +1,1216 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="读书,思考,代码,前端,C++,mac,osx,博客,创业,学习">
+    <meta name="description" content="Smoking">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Smoking</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3035147742760608",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-darcula.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Smoking</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Smoking</div>
+        <div class="logo-desc">
+            
+            多看看,多学习,多实践
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
+
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color:rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
+
+
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    求知若饥，虚心若愚
+                
+            </div>
+
+            <div class="description center-align">
+                
+                    多看看,多学习,多实践
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>开始阅读
+                </a>
+
+                
+                <a href="https://github.com/Smoking" class="waves-effect waves-light btn" target="_blank">
+                    <i class="fa fa-github-alt"></i>Github
+                </a>
+                
+            </div>
+            <div class="cover-social-link">
+    <a href="https://github.com/Smoking" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:287482894@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=287482894" class="tooltipped" data-tooltip="QQ联系我: 287482894" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+$(function () {
+    let coverSlider = $('.carousel');
+    coverSlider.carousel({
+        duration: Number('120'),
+        fullWidth: true,
+        indicators: 'true' === 'true'
+    });
+
+    let carouselIntervalId;
+    
+    // Loop to call the next cover article picture.
+    let autoCarousel = function() {
+        carouselIntervalId = setInterval(function () {
+            coverSlider.carousel('next');
+        }, 5000);
+    };
+    autoCarousel();
+    
+
+    let restartPlay = function () {
+        
+        clearInterval(carouselIntervalId);
+        autoCarousel();
+        
+    };
+
+    
+    // prev and next cover post.
+    $('#prev-cover').click(function () {
+        coverSlider.carousel('prev');
+        restartPlay();
+    });
+    $('#next-cover').click(function () {
+        coverSlider.carousel('next');
+        restartPlay();
+    });
+    
+});
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+
+                    
+
+                    
+
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+
+
+<div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
+    
+    
+    <div class="col s12 m6" >
+        <div class="post-card" style="background-image: url('https://i.loli.net/2019/05/24/5ce7a7bfbbe6458325.jpeg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category" target="_blank">编程</a>
+                    
+                </div>
+                <a href="/electron-dai-ma-jie-mi.html" target="_blank">
+                    <h3 class="post-title">electron 代码 解密</h3>
+                </a>
+                <p class="post-description">
+                    
+                        解密模块需要解决的问题
+在读取指定路径的加密文件
+AES 解密代码文件
+加载 JS 解密之后的内容
+
+怎么加载nodejs模块加载机制
+re
+                    
+                </p>
+                <a href="/electron-dai-ma-jie-mi.html" target="_blank"
+                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" >
+        <div class="post-card" style="background-image: url('https://cdn-images-1.medium.com/max/2600/1*aBsgPiEeOE5lLoippRm7BA.png')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category" target="_blank">编程</a>
+                    
+                </div>
+                <a href="/electron-gong-cheng-da-bao.html" target="_blank">
+                    <h3 class="post-title">electron 工程 打包</h3>
+                </a>
+                <p class="post-description">
+                    
+                        说明这一套方案只是介绍了我在工程中用的一种解决方案，当然还有很多其他解决方案。
+实现目的把electron工程打包成一个安装包，在客户机器上
+                    
+                </p>
+                <a href="/electron-gong-cheng-da-bao.html" target="_blank"
+                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/curl-zi-dong-huo-qu-bing-she-zhi-dai-li.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="curl 自动获取并设置代理">
+                            
+                            <span class="card-title">curl 自动获取并设置代理</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                自动从注册表中读取代理bool CCurlHttpClient::GetAutoProxy(vector&lt;std::string> &amp; proxyVct) {
+  proxyVct.clear();
+  HKEY key;
+ 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C/" target="_blank">
+                            <span class="chip bg-color">C++</span>
+                        </a>
+                        
+                        <a href="/tags/curl/" target="_blank">
+                            <span class="chip bg-color">curl</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/ce-shi-jiao-ben.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="测试脚本">
+                            
+                            <span class="card-title">测试脚本</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                #!/bin/bash -ilex
+
+
+check(){
+    code=$1;
+    openid=$2;
+    toopenid=$3;
+    start "cloudhub://$2:yzj@/autologin?eid=11
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-user fa-fw"></i>
+                                Smoking
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/c-du-qu-asar-zhong-de-wen-jian.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/07/27/5d3bff01c6c5389215.jpg" class="responsive-img" alt="C++ 读取asar中的文件">
+                            
+                            <span class="card-title">C++ 读取asar中的文件</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                什么是asar官方说明
+asar - Electron ArchiveAsar is a simple extensive archive format, it works like tar that concatenates all fi
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C/" target="_blank">
+                            <span class="chip bg-color">C++</span>
+                        </a>
+                        
+                        <a href="/tags/nodejs/" target="_blank">
+                            <span class="chip bg-color">nodejs</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/inno-setup-an-zhuang-jian-li-hui-gun-ji-zhi.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/07/11/5d26f037048f774425.png" class="responsive-img" alt="inno setup 安装建立回滚机制">
+                            
+                            <span class="card-title">inno setup 安装建立回滚机制</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                目的安装包在安装过程中可能因为环境或者其他特殊原因安装失败了，但是不能影响以前安装的旧版本，所以就需要建立回滚机制，当安装失败的时候自动复原到以前的版本
+实现步骤
+在安装之前，拷贝安装目录下的文件到缓存目录，或者移动安装目录下的文件到缓存目
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%84%9A%E6%9C%AC/" target="_blank">
+                            <span class="chip bg-color">脚本</span>
+                        </a>
+                        
+                        <a href="/tags/innosetup/" target="_blank">
+                            <span class="chip bg-color">innosetup</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/inno-setup-kao-bei-wen-jian-jia-yi-dong-wen-jian-jia.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/07/11/5d26eadc2554a44600.png" class="responsive-img" alt="inno setup 拷贝文件夹 移动文件夹 ">
+                            
+                            <span class="card-title">inno setup 拷贝文件夹 移动文件夹 </span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                用代码实现文件夹的递归拷贝和移动,不用setup 中字段实现
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%84%9A%E6%9C%AC/" target="_blank">
+                            <span class="chip bg-color">脚本</span>
+                        </a>
+                        
+                        <a href="/tags/innosetup/" target="_blank">
+                            <span class="chip bg-color">innosetup</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/c-kao-bei-word-excel-zhong-de-tu-pian.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/07/04/5d1dadac85e9f89687.png" class="responsive-img" alt="C++ 获取 word、excel中拷贝的图片">
+                            
+                            <span class="card-title">C++ 获取 word、excel中拷贝的图片</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                在word中拷贝图片，在剪贴板中存在的图片格式有几种情况，有CF_DIB,CF_BITMAP，CF_ENHMETAFILE，这里我们介绍获取CF_ENHMETAFILE 格式图片
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C/" target="_blank">
+                            <span class="chip bg-color">C++</span>
+                        </a>
+                        
+                        <a href="/tags/windows/" target="_blank">
+                            <span class="chip bg-color">windows</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/shen-yue-du-xin-xi-bao-zha-shi-dai-wo-men-ru-he-du-shu.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/07/01/5d19d60c3065327461.jpg" class="responsive-img" alt="《深阅读:信息爆炸时代我们如何读书》-（日）斋藤孝">
+                            
+                            <span class="card-title">《深阅读:信息爆炸时代我们如何读书》-（日）斋藤孝</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                关于本书作者开篇就强调我们需要读书的重要性，读书能获得安静，自处，见识和成长等，读书这个技能需要不断的锻炼和练习的，如何快速读书，如何快速消化，如何快速应用，皆是自我阅读一定量之后形成一套自己的方法，也能自己去识别哪些是好书，那些书可以快速
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%AF%BB%E4%B9%A6/" class="post-category" target="_blank">
+                                    读书
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_blank">
+                            <span class="chip bg-color">读书笔记</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E5%8A%9B/" target="_blank">
+                            <span class="chip bg-color">学习力</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/shui-bu-ke-yi-jian-chi.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/06/28/5d15ec0c80e8b36748.jpg" class="responsive-img" alt="《谁说你不能坚持》--程龙 编著">
+                            
+                            <span class="card-title">《谁说你不能坚持》--程龙 编著</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                很不错的一本书，对于我来说一口气读完了，谁说你不能坚持？只是没有行动没有找到方法，说到底是行动的问题，常常不敢迈出舒适区，永远在舒适区里面就形成了恶性循环。越来越觉得自身存在很多毛病和问题，不去行动存在头脑中的悬而未决的事情就变成了焦虑，变
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-28
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%AF%BB%E4%B9%A6/" class="post-category" target="_blank">
+                                    读书
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_blank">
+                            <span class="chip bg-color">读书笔记</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%A1%8C%E5%8A%A8%E5%8A%9B/" target="_blank">
+                            <span class="chip bg-color">行动力</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/c-jian-ting-tong-zhi-zhong-xin-shi-xian.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/06/27/5d14b0f6472af16459.jpg" class="responsive-img" alt="c++ 实现 事件监听通知中心">
+                            
+                            <span class="card-title">c++ 实现 事件监听通知中心</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                目的监听通知具体实现内容：当一个发送一个通知之后，所有监听这个事件的接口都收到通知执行某个任务这里我使用libuv实现多线程执行任务，可以使用线程池替换实现，也可以使用单线程看具体使用场景
+代码#include &lt;map>
+#incl
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C/" target="_blank">
+                            <span class="chip bg-color">C++</span>
+                        </a>
+                        
+                        <a href="/tags/windows/" target="_blank">
+                            <span class="chip bg-color">windows</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/windows-osx-dong-tai-jia-zai-dong-tai-ku.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/06/27/5d149696cc6a194563.jpg" class="responsive-img" alt="windows、macosx 动态 加载 动态库 类封装">
+                            
+                            <span class="card-title">windows、macosx 动态 加载 动态库 类封装</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                目的为了方便在windows平台或者mac、osx平台上调用动态库，封装一个C++基础模板类，实现动态库加载，函数获取以及直接调用，直接调用时只要传入函数名成和参数即可
+因为要兼容windows 和mac 平台我们定义两个宏做编译区分def
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/C/" target="_blank">
+                            <span class="chip bg-color">C++</span>
+                        </a>
+                        
+                        <a href="/tags/windows/" target="_blank">
+                            <span class="chip bg-color">windows</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/xi-tong-zhi-mei.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/06/27/5d1486803e8b876618.jpg" class="responsive-img" alt="《系统之美》-作者:[美] 德内拉·梅多斯">
+                            
+                            <span class="card-title">《系统之美》-作者:[美] 德内拉·梅多斯</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                这本书是一本系统思维的入门经典，因为概念和科普性很强，所以阅读是有难度的，不过作者加入了大量的案例向我们展示系统之美，让跟着作者的思路走有一种畅快淋漓的感觉。虽然偏社科人文多一些，但是不影响相关思想的理解和运用，想要运用好，就需要对这个世界
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%AF%BB%E4%B9%A6/" class="post-category" target="_blank">
+                                    读书
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_blank">
+                            <span class="chip bg-color">读书笔记</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%80%9D%E7%BB%B4%E5%8A%9B/" target="_blank">
+                            <span class="chip bg-color">思维力</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/expression-invalid-integer.html">
+                        <div class="card-image">
+                            
+                            <img src="https://i.loli.net/2019/06/27/5d1458cf5730097064.png" class="responsive-img" alt="Expression:(Invalid integer length modifier, 0)">
+                            
+                            <span class="card-title">Expression:(Invalid integer length modifier, 0)</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                问题最新公司项目桌面端软件上传一些特殊文件名的文件造成程序奔溃，找半天才找到奔溃的地方，竟然是vsnprintf这个函数奔溃了，知道奔溃的函数了那就debug一下，然后报错如下
+
+列上代码：void log::Write(LogLevel 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/windows/" target="_blank">
+                            <span class="chip bg-color">windows</span>
+                        </a>
+                        
+                        <a href="/tags/c/" target="_blank">
+                            <span class="chip bg-color">c++</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 4</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://smoking.github.io/" target="_blank">smoking</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">43.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Smoking" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:287482894@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=287482894" class="tooltipped" data-tooltip="QQ联系我: 287482894" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141216049-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-141216049-1');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

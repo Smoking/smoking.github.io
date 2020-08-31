@@ -1,0 +1,1412 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="C++ 获取 word、excel中拷贝的图片, 读书,思考,代码,前端,C++,mac,osx,博客,创业,学习">
+    <meta name="description" content="目标C++ 从剪贴板中获取在 word、excel中拷贝图片，然后再其他软件中显示该图片,一般bitmap,jpeg,png 是我们常用的渲染格式。所以获取的图片肯能需要转换成常用的格式才能显示
+分析在 word中拷贝图片，在剪贴板中可能存">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>C++ 获取 word、excel中拷贝的图片 | Smoking</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3035147742760608",
+        enable_page_level_ads: true
+      });
+    </script>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-darcula.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Smoking</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Smoking</div>
+        <div class="logo-desc">
+            
+            多看看,多学习,多实践
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.loli.net/2019/07/04/5d1dadac85e9f89687.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        C++ 获取 word、excel中拷贝的图片
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/" target="_blank">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/windows/" target="_blank">
+                                <span class="chip bg-color">windows</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                编程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-07-04
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>C++ 从剪贴板中获取在 word、excel中拷贝图片，然后再其他软件中显示该图片,一般bitmap,jpeg,png 是我们常用的渲染格式。所以获取的图片肯能需要转换成常用的格式才能显示</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在 word中拷贝图片，在剪贴板中可能存在几种格式如下</p>
+<h4 id="CF-DIB-CF-BITMAP"><a href="#CF-DIB-CF-BITMAP" class="headerlink" title="CF_DIB,CF_BITMAP"></a>CF_DIB,CF_BITMAP</h4><p>在docx文件中拷贝一张图可能是这种格式</p>
+<p>CF_DIB,CF_BITMAP 这类型的图片获取最简单</p>
+<p>::GetClipboardData(format) 获取对应的bmp图片就可以了。</p>
+<h4 id="HTML-Format"><a href="#HTML-Format" class="headerlink" title="HTML Format"></a>HTML Format</h4><p>在doc文件拷贝多张图是这种格式</p>
+<p>我们看一个样例中的html 数据:</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>554<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>268<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps26.png<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position:absolute;z-index:1;margin-left:0.0000px;
+margin-top:0.0000px;width:32.0000px;height:32.0000px;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>32<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>32<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps27.png<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>555<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>341<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps28.jpg<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>554<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>310<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps29.jpg<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>554<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>173<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps30.jpg<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>MsoNormal</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>555<span class="token punctuation">"</span></span>  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>305<span class="token punctuation">"</span></span>  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///C:\Users\28748\AppData\Local\Temp\ksohtml23516\wps31.jpg<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mso-spacerun:<span class="token punctuation">'</span>yes<span class="token punctuation">'</span>;font-family:等线;font-size:10.5000pt;
+mso-font-kerning:1.0000pt;<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token entity" title="&nbsp;">&amp;nbsp;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">o:</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>发现都是标签的形式，然后图片就是以本地文件路径放在标签src地址上，我们扫描信息获取标签可以获取图片地址，从而在其他软件中加载显示即可</p>
+<h4 id="CF-ENHMETAFILE"><a href="#CF-ENHMETAFILE" class="headerlink" title="CF_ENHMETAFILE"></a>CF_ENHMETAFILE</h4><p>在doc文件拷贝一张图可能是这种格式,Metafile 分为普通图元文件和增强型图元文件两种，扩展名分别为.wmf和.emf。图元文件将图形定义为编码的线段和图形，也称作“绘图类型”的图形。<br>我们看一下 metafile 的说明</p>
+<blockquote>
+<p>Metafile和位图的关系，就像点阵图和位元映射图形(矢量图形)的关系一样。点阵图通常来自实际的图像，而metafile则大多是通过电脑程式人为建立的。点阵是通过记录像素点的位置描绘图形，而矢量图形是通过数学公式即时演算画出的图形。Metafile由一系列与图形函式呼叫相同的二进位记录组成，这些记录一般用于绘制直线、曲线、填入的区域和文字等。</p>
+</blockquote>
+<p>这篇文章目的就是获取这种格式的图片并且转换为其他格式</p>
+<h2 id="获取剪贴板中-CF-ENHMETAFILE-即-metafile-图片"><a href="#获取剪贴板中-CF-ENHMETAFILE-即-metafile-图片" class="headerlink" title="获取剪贴板中 CF_ENHMETAFILE 即 metafile 图片"></a>获取剪贴板中 CF_ENHMETAFILE 即 metafile 图片</h2><p>直接上代码</p>
+<pre class=" language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">//打开剪贴板</span>
+<span class="token operator">::</span><span class="token function">OpenClipboard</span><span class="token punctuation">(</span><span class="token function">GetDesktopWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">::</span><span class="token function">IsClipboardFormatAvailable</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取CF_ENHMETAFILE 格式图片</span>
+    HENHMETAFILE hemf <span class="token operator">=</span> <span class="token punctuation">(</span>HENHMETAFILE<span class="token punctuation">)</span><span class="token operator">::</span><span class="token function">GetClipboardData</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    HENHMETAFILE  hMetaFile<span class="token operator">=</span><span class="token function">CopyEnhMetaFile</span><span class="token punctuation">(</span>hemf<span class="token punctuation">,</span> <span class="token string">"c:\\test.emf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存到文件</span>
+    <span class="token comment" spellcheck="true">//关闭CMetafileDC并获得它的句柄</span>
+    <span class="token function">DeleteEnhMetaFile</span><span class="token punctuation">(</span>hMetaFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">::</span><span class="token function">CloseClipboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<h2 id="绘制-metafile-图片"><a href="#绘制-metafile-图片" class="headerlink" title="绘制 metafile 图片"></a>绘制 metafile 图片</h2><pre class=" language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">//打开剪贴板</span>
+<span class="token operator">::</span><span class="token function">OpenClipboard</span><span class="token punctuation">(</span><span class="token function">GetDesktopWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">::</span><span class="token function">IsClipboardFormatAvailable</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//获取CF_ENHMETAFILE 格式图片</span>
+    HENHMETAFILE hemf <span class="token operator">=</span> <span class="token punctuation">(</span>HENHMETAFILE<span class="token punctuation">)</span><span class="token operator">::</span><span class="token function">GetClipboardData</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    HDC dc <span class="token operator">=</span> <span class="token operator">::</span><span class="token function">GetDC</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PlayEnhMetaFile</span><span class="token punctuation">(</span>memDC<span class="token punctuation">,</span> hemf<span class="token punctuation">,</span> <span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//绘制函数</span>
+<span class="token punctuation">}</span>
+<span class="token operator">::</span><span class="token function">CloseClipboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<h2 id="读取-metafile-图片"><a href="#读取-metafile-图片" class="headerlink" title="读取 metafile 图片"></a>读取 metafile 图片</h2><pre class=" language-cpp"><code class="language-cpp">
+HENHMETAFILE hemf<span class="token punctuation">;</span> 
+hemf <span class="token operator">=</span> <span class="token function">GetEnhMetaFile</span><span class="token punctuation">(</span><span class="token string">"c:\\test.emf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ENHMETAHEADER   emh<span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">// Get the header from the enhanced metafile.   </span>
+<span class="token function">ZeroMemory</span><span class="token punctuation">(</span> <span class="token operator">&amp;</span>emh<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ENHMETAHEADER<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>   
+emh<span class="token punctuation">.</span>nSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ENHMETAHEADER<span class="token punctuation">)</span><span class="token punctuation">;</span>   
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">GetEnhMetaFileHeader</span><span class="token punctuation">(</span> hemf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span> ENHMETAHEADER <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>emh <span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">)</span>   
+<span class="token punctuation">{</span>   
+    <span class="token function">DeleteEnhMetaFile</span><span class="token punctuation">(</span> hemf <span class="token punctuation">)</span><span class="token punctuation">;</span>   
+    <span class="token keyword">return</span> FALSE<span class="token punctuation">;</span>   
+<span class="token punctuation">}</span>
+</code></pre>
+<p>metafile 文件的头结构体如下 </p>
+<pre class=" language-cpp"><code class="language-cpp">
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagENHMETAHEADER <span class="token punctuation">{</span>
+  DWORD iType<span class="token punctuation">;</span>
+  DWORD nSize<span class="token punctuation">;</span>
+  RECTL rclBounds<span class="token punctuation">;</span>
+  RECTL rclFrame<span class="token punctuation">;</span>
+  DWORD dSignature<span class="token punctuation">;</span>
+  DWORD nVersion<span class="token punctuation">;</span>
+  DWORD nBytes<span class="token punctuation">;</span>
+  DWORD nRecords<span class="token punctuation">;</span>
+  WORD  nHandles<span class="token punctuation">;</span>
+  WORD  sReserved<span class="token punctuation">;</span>
+  DWORD nDescription<span class="token punctuation">;</span>
+  DWORD offDescription<span class="token punctuation">;</span>
+  DWORD nPalEntries<span class="token punctuation">;</span>
+  SIZEL szlDevice<span class="token punctuation">;</span>
+  SIZEL szlMillimeters<span class="token punctuation">;</span>
+  DWORD cbPixelFormat<span class="token punctuation">;</span>
+  DWORD offPixelFormat<span class="token punctuation">;</span>
+  DWORD bOpenGL<span class="token punctuation">;</span>
+  SIZEL szlMicrometers<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> ENHMETAHEADER<span class="token punctuation">,</span> <span class="token operator">*</span>PENHMETAHEADER<span class="token punctuation">,</span> <span class="token operator">*</span>LPENHMETAHEADER<span class="token punctuation">;</span>
+</code></pre>
+<p>具体每个元素的具体含义可以参考 <a href="https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-tagenhmetaheader" target="_blank" rel="noopener">MSDN</a> </p>
+<p>我们需要用到的是 rclFrame 这个参数获取图片的大小</p>
+<h2 id="metafile-转-bitmap"><a href="#metafile-转-bitmap" class="headerlink" title="metafile 转 bitmap"></a>metafile 转 bitmap</h2><pre class=" language-cpp"><code class="language-cpp"><span class="token operator">::</span><span class="token function">OpenClipboard</span><span class="token punctuation">(</span><span class="token function">GetDesktopWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">::</span><span class="token function">IsClipboardFormatAvailable</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    HENHMETAFILE hemf <span class="token operator">=</span> <span class="token punctuation">(</span>HENHMETAFILE<span class="token punctuation">)</span><span class="token operator">::</span><span class="token function">GetClipboardData</span><span class="token punctuation">(</span>CF_ENHMETAFILE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    HBITMAP     bitmap<span class="token punctuation">;</span>
+    ENHMETAHEADER head<span class="token punctuation">;</span>
+    HDC         memDC<span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>head<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ENHMETAHEADER<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    head<span class="token punctuation">.</span>nSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ENHMETAHEADER<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">GetEnhMetaFileHeader</span><span class="token punctuation">(</span>hemf<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ENHMETAHEADER<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    HDC dc <span class="token operator">=</span> <span class="token operator">::</span><span class="token function">GetDC</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    RECT    rect<span class="token punctuation">;</span>
+
+
+    rect<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>top <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>right <span class="token operator">=</span> head<span class="token punctuation">.</span>rclFrame<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
+    rect<span class="token punctuation">.</span>bottom <span class="token operator">=</span> head<span class="token punctuation">.</span>rclFrame<span class="token punctuation">.</span>bottom<span class="token punctuation">;</span>
+
+    memDC <span class="token operator">=</span> <span class="token operator">::</span><span class="token function">CreateCompatibleDC</span><span class="token punctuation">(</span>dc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//Create a bitmap compatible to Window DC   </span>
+    bitmap <span class="token operator">=</span> <span class="token operator">::</span><span class="token function">CreateCompatibleBitmap</span><span class="token punctuation">(</span>dc<span class="token punctuation">,</span> lWidth<span class="token punctuation">,</span> lHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token operator">::</span><span class="token function">SelectObject</span><span class="token punctuation">(</span>memDC<span class="token punctuation">,</span> bitmap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//这里用白色的画刷，word中的透明图片会显示黑色</span>
+
+    <span class="token function">SetBackColorToWhite</span><span class="token punctuation">(</span>memDC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//把metafile 图片绘制到bitmap 上,绘制完成之后 bitmap就是我们需要的</span>
+    <span class="token function">PlayEnhMetaFile</span><span class="token punctuation">(</span>memDC<span class="token punctuation">,</span> hemf<span class="token punctuation">,</span> <span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="bitmap-转-png-buffer"><a href="#bitmap-转-png-buffer" class="headerlink" title="bitmap 转 png buffer"></a>bitmap 转 png buffer</h2><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">bool</span> <span class="token function">save_png_memory</span><span class="token punctuation">(</span>HBITMAP hbitmap<span class="token punctuation">,</span> std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>BYTE<span class="token operator">></span> <span class="token operator">&amp;</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Gdiplus<span class="token operator">::</span>Bitmap <span class="token function">bmp</span><span class="token punctuation">(</span>hbitmap<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//write to IStream</span>
+    IStream<span class="token operator">*</span> istream <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+    <span class="token function">CreateStreamOnHGlobal</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> TRUE<span class="token punctuation">,</span> <span class="token operator">&amp;</span>istream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    CLSID clsid_png<span class="token punctuation">;</span>
+    <span class="token function">CLSIDFromString</span><span class="token punctuation">(</span>L<span class="token string">"{557cf406-1a04-11d3-9a73-0000f81ef32e}"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>clsid_png<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Gdiplus<span class="token operator">::</span>Status status <span class="token operator">=</span> bmp<span class="token punctuation">.</span><span class="token function">Save</span><span class="token punctuation">(</span>istream<span class="token punctuation">,</span> <span class="token operator">&amp;</span>clsid_png<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">!=</span> Gdiplus<span class="token operator">::</span>Status<span class="token operator">::</span>Ok<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//get memory handle associated with istream</span>
+    HGLOBAL hg <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token function">GetHGlobalFromStream</span><span class="token punctuation">(</span>istream<span class="token punctuation">,</span> <span class="token operator">&amp;</span>hg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//copy IStream to buffer</span>
+    <span class="token keyword">int</span> bufsize <span class="token operator">=</span> <span class="token function">GlobalSize</span><span class="token punctuation">(</span>hg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    data<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span>bufsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//lock &amp; unlock memory</span>
+    LPVOID pimage <span class="token operator">=</span> <span class="token function">GlobalLock</span><span class="token punctuation">(</span>hg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> pimage<span class="token punctuation">,</span> bufsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">GlobalUnlock</span><span class="token punctuation">(</span>hg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    istream<span class="token operator">-</span><span class="token operator">></span><span class="token function">Release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>调用代码</p>
+<pre class=" language-cpp"><code class="language-cpp">std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>BYTE<span class="token operator">></span> data<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">save_png_memory</span><span class="token punctuation">(</span>bitmap<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//write from memory to file for testing:</span>
+    std<span class="token operator">::</span>ofstream <span class="token function">fout</span><span class="token punctuation">(</span><span class="token string">"test.png"</span><span class="token punctuation">,</span> std<span class="token operator">::</span>ios<span class="token operator">::</span>binary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    fout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span>data<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    fout<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>把上面的功能串起来之后 metafile 文件可以直接在内存中转化为bitmap，也可以转换成png、jpeg等需要的格式，不需要先保存到本地，减少io</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">
+                    <img alt="知识共享许可协议"
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                《C++ 获取 word、excel中拷贝的图片》
+            </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/c-kao-bei-word-excel-zhong-de-tu-pian.html" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Smoking
+            </a> 采用
+            <a rel="license"
+               href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">
+                知识共享署名-相同方式共享 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            
+        </div>
+    </div>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文章广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3035147742760608"
+     data-ad-slot="8638710298"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'dOv9qrb5kUlH4eYfAigm2SOb-gzGzoHsz',
+        appKey: 'FXxlBJgY9IV9HEsfv3MqzYBa',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+    
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文章广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3035147742760608"
+     data-ad-slot="8638710298"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/inno-setup-kao-bei-wen-jian-jia-yi-dong-wen-jian-jia.html">
+                    <div class="card-image">
+                        
+                        <img src="https://i.loli.net/2019/07/11/5d26eadc2554a44600.png" class="responsive-img" alt="inno setup 拷贝文件夹 移动文件夹 ">
+                        
+                        <span class="card-title">inno setup 拷贝文件夹 移动文件夹 </span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            用代码实现文件夹的递归拷贝和移动,不用setup 中字段实现
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category" target="_blank">
+                                    编程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%84%9A%E6%9C%AC/" target="_blank">
+                        <span class="chip bg-color">脚本</span>
+                    </a>
+                    
+                    <a href="/tags/innosetup/" target="_blank">
+                        <span class="chip bg-color">innosetup</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/shen-yue-du-xin-xi-bao-zha-shi-dai-wo-men-ru-he-du-shu.html">
+                    <div class="card-image">
+                        
+                        <img src="https://i.loli.net/2019/07/01/5d19d60c3065327461.jpg" class="responsive-img" alt="《深阅读:信息爆炸时代我们如何读书》-（日）斋藤孝">
+                        
+                        <span class="card-title">《深阅读:信息爆炸时代我们如何读书》-（日）斋藤孝</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关于本书作者开篇就强调我们需要读书的重要性，读书能获得安静，自处，见识和成长等，读书这个技能需要不断的锻炼和练习的，如何快速读书，如何快速消化，如何快速应用，皆是自我阅读一定量之后形成一套自己的方法，也能自己去识别哪些是好书，那些书可以快速
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6/" class="post-category" target="_blank">
+                                    读书
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" target="_blank">
+                        <span class="chip bg-color">读书笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E5%8A%9B/" target="_blank">
+                        <span class="chip bg-color">学习力</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Smoking<br />'
+            + '作者: smoking<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者smoking所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://smoking.github.io/" target="_blank">smoking</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">43.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Smoking" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:287482894@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=287482894" class="tooltipped" data-tooltip="QQ联系我: 287482894" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141216049-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-141216049-1');
+</script>
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
